@@ -4,6 +4,7 @@ import glob
 from transformers import Wav2Vec2Processor, Wav2Vec2ForCTC
 from datasets import load_dataset
 import torch
+from tqdm.auto import trange, tqdm
 
 device = 'xpu' if torch.xpu.is_available() else 'cpu'
 print(f"Using {device} device")
@@ -18,7 +19,7 @@ model.to(device)
 ds = load_dataset("hf-internal-testing/librispeech_asr_dummy", "clean", split="validation")
 
 
-for i in range(len(ds)):
+for i in trange(len(ds)):
     # tokenize
     input_values = processor(ds[i]["audio"]["array"], return_tensors="pt", padding="longest", sampling_rate=16000).input_values  # Batch size 1
 
