@@ -1,14 +1,16 @@
 [project]
 name = "gpu-compute-test"
 version = "0.1.0"
-description = "Add your description here"
+description = "Unified accelerator smoke tests for Wav2Vec2 inference"
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.12,<3.13"
 dependencies = [
     "datasets>=3.3.2",
     "librosa>=0.10.2.post1",
+    "setuptools==81.0",
     "transformers>=4.49.0",
 ]
+
 [tool.ruff]
 # Exclude a variety of commonly ignored directories.
 exclude = [
